@@ -1,0 +1,430 @@
+<style>
+/* --- 1. CSS STYLING --- */
+
+/* Basic container for centering and readability */
+.culture-audit-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Styling for the main sections (Trust, Communication, etc.) */
+.culture-section {
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-left: 5px solid #007bff; /* HubSpot blue */
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.culture-section h3 {
+    color: #007bff;
+    margin-top: 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Styling for individual questions */
+.question-item {
+    padding: 10px 0;
+    border-bottom: 1px dashed #e0e0e0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.question-item:last-child {
+    border-bottom: none;
+}
+
+/* Styling for the radio button options */
+.options-group {
+    margin-top: 5px;
+    display: flex;
+    gap: 20px;
+}
+
+.options-group label {
+    cursor: pointer;
+    font-weight: normal;
+    transition: color 0.2s;
+}
+
+.options-group input[type="radio"]:checked + span {
+    font-weight: bold;
+    color: #28a745; /* Green for selected answer */
+}
+
+/* Styling for the Score Button */
+#calculate-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ff7a59; /* HubSpot orange for action */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#calculate-btn:hover {
+    background-color: #e36a4f;
+}
+
+/* Styling for the Results Area */
+.results-area {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid #28a745;
+    border-radius: 8px;
+    background-color: #e6f7e9;
+    text-align: center;
+    display: none; /* Hide until button is clicked */
+}
+
+.results-area h4 {
+    color: #28a745;
+    margin-bottom: 5px;
+}
+
+#total-score-display {
+    font-size: 40px;
+    font-weight: bold;
+    color: #007bff;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#result-message-display {
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+</style>
+
+<div class="culture-audit-container">
+
+    <h2>THE CULTURE AUDIT CHECKLIST</h2>
+    <p>How strong is your team culture today? Score each item as Yes (2 points), Sometimes (1 point), or No (0 points).</p>
+    
+    <form id="culture-audit-form">
+
+        <div class="culture-section">
+            <h3>1. TRUST</h3>
+            
+            <div class="question-item">
+                <p>My team feels safe telling me the truth, even when it’s uncomfortable.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q1_trust_1" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q1_trust_1" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q1_trust_1" value="0"> <span>No</span></label>
+                </div>
+            </div>
+            
+            <div class="question-item">
+                <p>I follow through on what I say I’ll do.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q1_trust_2" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q1_trust_2" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q1_trust_2" value="0"> <span>No</span></label>
+                </div>
+            </div>
+            
+            <div class="question-item">
+                <p>I admit mistakes quickly instead of defending them.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q1_trust_3" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q1_trust_3" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q1_trust_3" value="0"> <span>No</span></label>
+                </div>
+            </div>
+            
+            <div class="question-item">
+                <p>I consistently show respect even when correcting performance.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q1_trust_4" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q1_trust_4" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q1_trust_4" value="0"> <span>No</span></label>
+                </div>
+            </div>
+            
+            <div class="question-item">
+                <p>My team believes I’m here to make them better.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q1_trust_5" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q1_trust_5" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q1_trust_5" value="0"> <span>No</span></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="culture-section">
+            <h3>2. COMMUNICATION</h3>
+
+            <div class="question-item">
+                <p>Everyone knows the priorities for this week.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q2_comm_1" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q2_comm_1" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q2_comm_1" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>Expectations are clear, specific, and written down.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q2_comm_2" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q2_comm_2" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q2_comm_2" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>Hard conversations happen quickly, not weeks later.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q2_comm_3" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q2_comm_3" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q2_comm_3" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>I check for understanding instead of assuming it.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q2_comm_4" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q2_comm_4" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q2_comm_4" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>My team gets regular feedback, not just when something is wrong.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q2_comm_5" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q2_comm_5" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q2_comm_5" value="0"> <span>No</span></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="culture-section">
+            <h3>3. ACCOUNTABILITY</h3>
+
+            <div class="question-item">
+                <p>Standards are clear, visible, and known by everyone.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q3_acct_1" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q3_acct_1" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q3_acct_1" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>I hold people accountable without drama or emotional spikes.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q3_acct_2" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q3_acct_2" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q3_acct_2" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>Underperformance is addressed right away.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q3_acct_3" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q3_acct_3" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q3_acct_3" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>High performers are recognized and not taken for granted.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q3_acct_4" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q3_acct_4" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q3_acct_4" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>I model the standards I expect from my team.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q3_acct_5" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q3_acct_5" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q3_acct_5" value="0"> <span>No</span></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="culture-section">
+            <h3>4. ALIGNMENT</h3>
+
+            <div class="question-item">
+                <p>Every team member knows our mission and why it matters.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q4_align_1" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q4_align_1" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q4_align_1" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>Roles are clear and not overlapping or confusing.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q4_align_2" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q4_align_2" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q4_align_2" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>There’s a shared understanding of what success looks like.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q4_align_3" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q4_align_3" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q4_align_3" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>Meetings are focused, productive, and aligned to outcomes.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q4_align_4" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q4_align_4" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q4_align_4" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>The team behaves in a way that reflects our values daily.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q4_align_5" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q4_align_5" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q4_align_5" value="0"> <span>No</span></label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="culture-section">
+            <h3>5. TEAM PERFORMANCE</h3>
+
+            <div class="question-item">
+                <p>We hit goals consistently or have a clear plan when we don’t.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q5_perf_1" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q5_perf_1" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q5_perf_1" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>There’s energy on this team, not burnout and frustration.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q5_perf_2" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q5_perf_2" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q5_perf_2" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>New hires integrate quickly because our culture is strong.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q5_perf_3" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q5_perf_3" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q5_perf_3" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>People help each other instead of competing for survival.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q5_perf_4" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q5_perf_4" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q5_perf_4" value="0"> <span>No</span></label>
+                </div>
+            </div>
+
+            <div class="question-item">
+                <p>The team is growing, learning, and improving each month.</p>
+                <div class="options-group">
+                    <label><input type="radio" name="q5_perf_5" value="2" required> <span>Yes</span></label>
+                    <label><input type="radio" name="q5_perf_5" value="1"> <span>Sometimes</span></label>
+                    <label><input type="radio" name="q5_perf_5" value="0"> <span>No</span></label>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" id="calculate-btn">Calculate Your Culture Score</button>
+    </form>
+    
+    <div class="results-area" id="results-area">
+        <h4>Your Culture Score is:</h4>
+        <span id="total-score-display">0</span>
+        <p id="result-message-display"></p>
+    </div>
+
+</div>
+
+<script>
+/* --- 3. JAVASCRIPT SCORING LOGIC --- */
+
+// Get the form element
+const form = document.getElementById('culture-audit-form');
+// Get the results area element
+const resultsArea = document.getElementById('results-area');
+
+// Listen for when the form is submitted (when the button is clicked)
+form.addEventListener('submit', function(event) {
+    // Prevent the page from trying to reload/submit data (default form behavior)
+    event.preventDefault(); 
+    
+    calculateScore();
+});
+
+function calculateScore() {
+    let totalScore = 0;
+    
+    // Select all checked radio buttons inside the form
+    const checkedAnswers = document.querySelectorAll('#culture-audit-form input[type="radio"]:checked');
+
+    // Check if ALL questions have been answered (25 questions total)
+    if (checkedAnswers.length < 25) {
+        alert("Please answer ALL 25 questions before calculating your score.");
+        return; // Stop the function if not all questions are answered
+    }
+
+    // Loop through each checked answer
+    checkedAnswers.forEach(answer => {
+        // Add the 'value' (2, 1, or 0) to the total score. 
+        // parseInt converts the string value from the HTML to a number.
+        totalScore += parseInt(answer.value);
+    });
+
+    // Determine the appropriate message based on the scoring ranges
+    let resultMessage = '';
+    if (totalScore >= 43) {
+        resultMessage = "🎉 **You’re operating like an award-winning culture!** This is where 29-time culture winners live.";
+    } else if (totalScore >= 31) {
+        resultMessage = "🟡 **Your culture is good but vulnerable.** A few cracks can turn into big issues if they aren’t addressed soon.";
+    } else {
+        resultMessage = "🔴 **Your culture may be eroding quietly.** The symptoms show up as stress, turnover, and constant fire-fighting.";
+    }
+
+    // Update the results display
+    document.getElementById('total-score-display').textContent = totalScore;
+    document.getElementById('result-message-display').innerHTML = resultMessage;
+    
+    // Show the results area and scroll to it
+    resultsArea.style.display = 'block';
+    resultsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
