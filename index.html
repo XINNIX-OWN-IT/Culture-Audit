@@ -1,15 +1,26 @@
 <style>
-/* --- 1. CSS STYLING --- */
+/* --- 1. CSS STYLING (BRANDED) --- */
+
+/* Import Google Fonts for Poppins and Lato */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600&display=swap');
 
 /* Basic container for centering and readability */
 .culture-audit-container {
     max-width: 800px;
     margin: 0 auto;
-    font-family: Arial, sans-serif;
+    font-family: 'Lato', Arial, sans-serif; /* Using Lato as primary font */
     padding: 20px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Light grey background */
+    color: #333333; /* Darker text for readability */
+}
+
+h2 {
+    font-family: 'Poppins', Arial, sans-serif; /* Poppins for main heading */
+    color: #003366; /* Deep Blue */
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 /* Styling for the main sections (Trust, Communication, etc.) */
@@ -17,16 +28,17 @@
     margin-bottom: 25px;
     padding: 15px;
     background-color: #ffffff;
-    border-left: 5px solid #007bff; /* HubSpot blue */
+    border-left: 5px solid #003366; /* Deep Blue for section border */
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .culture-section h3 {
-    color: #007bff;
+    font-family: 'Poppins', Arial, sans-serif; /* Poppins for section headings */
+    color: #003366; /* Deep Blue */
     margin-top: 0;
     padding-bottom: 5px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #d0d0d0; /* Lighter border for contrast */
 }
 
 /* Styling for individual questions */
@@ -54,9 +66,10 @@
     transition: color 0.2s;
 }
 
+/* Style for the text next to the radio button when selected */
 .options-group input[type="radio"]:checked + span {
     font-weight: bold;
-    color: #28a745; /* Green for selected answer */
+    color: #003366; /* Deep Blue for selected answer */
 }
 
 /* Styling for the Score Button */
@@ -68,37 +81,39 @@
     font-size: 18px;
     font-weight: bold;
     color: #ffffff;
-    background-color: #ff7a59; /* HubSpot orange for action */
+    background-color: #F26921; /* Orange from brand guide */
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-family: 'Poppins', Arial, sans-serif; /* Poppins for button text */
 }
 
 #calculate-btn:hover {
-    background-color: #e36a4f;
+    background-color: #e35a11; /* Slightly darker orange on hover */
 }
 
 /* Styling for the Results Area */
 .results-area {
     margin-top: 30px;
     padding: 20px;
-    border: 2px solid #28a745;
+    border: 2px solid #003366; /* Deep Blue border for results */
     border-radius: 8px;
-    background-color: #e6f7e9;
+    background-color: #E6F0F8; /* A light blue tint for the results background */
     text-align: center;
     display: none; /* Hide until button is clicked */
 }
 
 .results-area h4 {
-    color: #28a745;
+    font-family: 'Poppins', Arial, sans-serif; /* Poppins for results heading */
+    color: #003366; /* Deep Blue */
     margin-bottom: 5px;
 }
 
 #total-score-display {
     font-size: 40px;
     font-weight: bold;
-    color: #007bff;
+    color: #F26921; /* Orange for the score number */
     display: block;
     margin-bottom: 10px;
 }
@@ -107,6 +122,7 @@
     font-size: 18px;
     line-height: 1.6;
     font-weight: 500;
+    color: #333333;
 }
 
 </style>
